@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     var data:[String]!
+    var isLast: Bool = false
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -63,9 +64,22 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            data.remove(at: indexPath.row)
+            if indexPath.row == data.count-1 {
+                print("is last \(isLast)")
+                self.isLast = true
+                data.remove(at: indexPath.row)
+                data.append("")
+            }
+            else {
+                self.isLast = false
+                data.remove(at: indexPath.row)
+            }
         }
         else if editingStyle == .insert {
+            if isLast {
+                data.remove(at: data.count-1)
+                isLast = false
+            }
             data.append(String(indexPath.row))
         }
         tableView.reloadData()
@@ -85,6 +99,7 @@ extension ViewController: UITableViewDelegate {
             else {
                 return .delete
             }
+
         }
         else {
             return .delete
