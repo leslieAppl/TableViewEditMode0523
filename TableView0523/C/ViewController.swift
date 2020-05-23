@@ -61,7 +61,7 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        print("move row from \"sourceIndexPath\" to \"destinationIndexPath\" corresponding with data model")
+        //move row from sourceIndexPath to destinationIndexPath corresponding with data model
     }
 }
 
