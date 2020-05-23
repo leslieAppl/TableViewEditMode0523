@@ -60,6 +60,9 @@ extension ViewController: UITableViewDataSource {
         tableView.reloadData()
     }
     
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        print("move row from \"sourceIndexPath\" to \"destinationIndexPath\" corresponding with data model")
+    }
 }
 
 extension ViewController: UITableViewDelegate {

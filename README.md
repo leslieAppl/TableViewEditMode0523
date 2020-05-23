@@ -6,4 +6,4 @@
         tableView.deleteRows(at indexPaths: with animation:)
         tableView.insertRows(at indexPaths: with animation:)
 
-
+## Show re-order control in TableView Edit mode
