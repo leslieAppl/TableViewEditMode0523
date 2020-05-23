@@ -13,6 +13,8 @@
 		CEA000AD2479529D00DC5134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA000AB2479529D00DC5134 /* Main.storyboard */; };
 		CEA000AF2479529F00DC5134 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA000AE2479529F00DC5134 /* Assets.xcassets */; };
 		CEA000B22479529F00DC5134 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA000B02479529F00DC5134 /* LaunchScreen.storyboard */; };
+		CEA000BA2479533C00DC5134 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA000B92479533C00DC5134 /* MyCell.swift */; };
+		CEA000BF2479538900DC5134 /* ApplicationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA000BE2479538900DC5134 /* ApplicationData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		CEA000AE2479529F00DC5134 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEA000B12479529F00DC5134 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEA000B32479529F00DC5134 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEA000B92479533C00DC5134 /* MyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
+		CEA000BE2479538900DC5134 /* ApplicationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,41 @@
 		CEA000A42479529D00DC5134 /* TableView0523 */ = {
 			isa = PBXGroup;
 			children = (
+				CEA000BD2479535D00DC5134 /* M */,
+				CEA000BC2479535000DC5134 /* V */,
+				CEA000BB2479534500DC5134 /* C */,
 				CEA000A52479529D00DC5134 /* AppDelegate.swift */,
 				CEA000A72479529D00DC5134 /* SceneDelegate.swift */,
-				CEA000A92479529D00DC5134 /* ViewController.swift */,
 				CEA000AB2479529D00DC5134 /* Main.storyboard */,
 				CEA000AE2479529F00DC5134 /* Assets.xcassets */,
 				CEA000B02479529F00DC5134 /* LaunchScreen.storyboard */,
 				CEA000B32479529F00DC5134 /* Info.plist */,
 			);
 			path = TableView0523;
+			sourceTree = "<group>";
+		};
+		CEA000BB2479534500DC5134 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				CEA000A92479529D00DC5134 /* ViewController.swift */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		CEA000BC2479535000DC5134 /* V */ = {
+			isa = PBXGroup;
+			children = (
+				CEA000B92479533C00DC5134 /* MyCell.swift */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		CEA000BD2479535D00DC5134 /* M */ = {
+			isa = PBXGroup;
+			children = (
+				CEA000BE2479538900DC5134 /* ApplicationData.swift */,
+			);
+			path = M;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +168,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA000BF2479538900DC5134 /* ApplicationData.swift in Sources */,
 				CEA000AA2479529D00DC5134 /* ViewController.swift in Sources */,
+				CEA000BA2479533C00DC5134 /* MyCell.swift in Sources */,
 				CEA000A62479529D00DC5134 /* AppDelegate.swift in Sources */,
 				CEA000A82479529D00DC5134 /* SceneDelegate.swift in Sources */,
 			);
