@@ -67,8 +67,13 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        if indexPath.row == data.count-1 {
-            return .insert
+        if tableView.isEditing {
+            if indexPath.row == data.count-1 {
+                return .insert
+            }
+            else {
+                return .delete
+            }
         }
         else {
             return .delete
