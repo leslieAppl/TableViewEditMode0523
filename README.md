@@ -1,7 +1,20 @@
 # Handle Edit Mode in iOS UITableView
 
 ## Set Edit Mode in TableView
-- NOTE: DON’T NEED, OTHERWISE THERE GONNA BE BUGS.
+- Asks the data source to commit the insertion or deletion of a specified row
+        
+        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+                data.remove(at: indexPath.row)
+            }
+            else if editingStyle == .insert {
+                data.append(String(indexPath.row))
+            }
+            tableView.reloadData()
+        }
+
+- NOTE: ONLY MODIFY DATA MODEL, DON’T MODIFY TABLE VIEW WITH THE METHODS BELOW.
+- OTHERWISE THERE GONNA BE BUGS
         
         tableView.deleteRows(at indexPaths: with animation:)
         tableView.insertRows(at indexPaths: with animation:)
