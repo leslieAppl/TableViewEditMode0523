@@ -13,8 +13,7 @@
             tableView.reloadData()
         }
 
-- NOTE: ONLY MODIFY DATA MODEL, DON’T MODIFY TABLE VIEW WITH THE METHODS BELOW.
-- OTHERWISE THERE GONNA BE BUGS
+- NOTE: ONLY MODIFY DATA MODEL, DON’T MODIFY TABLE VIEW WITH THE METHODS BELOW. OTHERWISE THERE GONNA BE BUGS
         
         tableView.deleteRows(at indexPaths: with animation:)
         tableView.insertRows(at indexPaths: with animation:)
@@ -38,3 +37,8 @@
         }
 
 ## Show re-order control in TableView Edit mode
+        
+        func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+            //move row from sourceIndexPath to destinationIndexPath corresponding with data model
+        }
+
