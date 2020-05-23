@@ -13,7 +13,7 @@
             tableView.reloadData()
         }
 
-- NOTE: ONLY MODIFY DATA MODEL, DON’T MODIFY TABLE VIEW WITH THE METHODS BELOW. OTHERWISE THERE GONNA BE BUGS
+- NOTE: ONLY MODIFY DATA MODEL, AND THEN RELOAD TABLE VIEW DATA. DON’T MODIFY TABLE VIEW WITH THE METHODS BELOW. OTHERWISE THERE GONNA BE BUGS
         
         tableView.deleteRows(at indexPaths: with animation:)
         tableView.insertRows(at indexPaths: with animation:)
