@@ -22,8 +22,19 @@ class ViewController: UIViewController {
         
         data = ["1", "2", "3"]
         
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // Do any additional setup after loading the view.
+        navigationItem.leftBarButtonItem = editButtonItem
+
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+        navigationItem.rightBarButtonItem = addButton
         
+    }
+    
+    @objc
+    func insertNewObject(_ sender: Any) {
+        data.insert("0", at: 0)
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
     }
 
     override func setEditing(_ editing: Bool, animated: Bool) {

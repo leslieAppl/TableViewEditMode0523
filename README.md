@@ -42,3 +42,28 @@
             //move row from sourceIndexPath to destinationIndexPath corresponding with data model
         }
 
+## Navigation Left | Right Bar Button Item
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            
+            tableView.dataSource = self
+            tableView.delegate = self
+            
+            data = ["1", "2", "3"]
+            
+            // Do any additional setup after loading the view.
+            navigationItem.leftBarButtonItem = editButtonItem
+
+            let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+            navigationItem.rightBarButtonItem = addButton
+            
+        }
+        
+        @objc
+        func insertNewObject(_ sender: Any) {
+            data.insert("0", at: 0)
+            let indexPath = IndexPath(row: 0, section: 0)
+            tableView.insertRows(at: [indexPath], with: .automatic)
+        }
+
