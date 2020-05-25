@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     
     @objc
     func insertNewObject(_ sender: Any) {
+        //disable right bar add button in edit mode
         if !tableView.isEditing {
             objects.insert("\(objects.count)", at: 0)
             tableView.reloadData()
@@ -62,6 +63,18 @@ extension ViewController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        //only allow delete rows in edit mode with delete button
+        if isEditing {
+            return true
+        }
+        //disable swipe to delele action
+        //cause it conflicts with edit mode when swiped to delete the last row in table view
+        else {
+            return false
+        }
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             objects.remove(at: indexPath.row)
@@ -86,7 +99,6 @@ extension ViewController: UITableViewDelegate {
             else {
                 return .delete
             }
-
         }
         else {
             return .delete
