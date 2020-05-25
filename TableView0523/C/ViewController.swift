@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        objects = ["1", "2", "3"]
+        objects = []
         
         // Do any additional setup after loading the view.
         navigationItem.leftBarButtonItem = editButtonItem
@@ -33,9 +33,8 @@ class ViewController: UIViewController {
     @objc
     func insertNewObject(_ sender: Any) {
         if !tableView.isEditing {
-            objects.insert("new", at: 0)
-            let indexPath = IndexPath(row: 0, section: 0)
-            tableView.insertRows(at: [indexPath], with: .automatic)
+            objects.insert("\(objects.count)", at: 0)
+            tableView.reloadData()
         }
     }
 
@@ -44,13 +43,9 @@ class ViewController: UIViewController {
         
         if editing {
             tableView.isEditing = true
-            self.objects.insert("add row", at: 0)
-            tableView.reloadData()
         }
         else {
             tableView.isEditing = false
-            self.objects.remove(at: 0)
-            tableView.reloadData()
         }
     }
 
@@ -72,7 +67,7 @@ extension ViewController: UITableViewDataSource {
             objects.remove(at: indexPath.row)
         }
         else if editingStyle == .insert {
-            objects.append(String(objects.count-1))
+            objects.insert("\(objects.count)", at: 0)
         }
         tableView.reloadData()
     }
