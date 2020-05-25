@@ -10,8 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var data:[String]!
-    var isLast: Bool = false
+    var objects:[String]!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,7 +20,7 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        data = ["1", "2", "3"]
+        objects = ["1", "2", "3"]
         
         // Do any additional setup after loading the view.
         navigationItem.leftBarButtonItem = editButtonItem
@@ -33,9 +32,11 @@ class ViewController: UIViewController {
     
     @objc
     func insertNewObject(_ sender: Any) {
-        data.insert("0", at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
+        if !tableView.isEditing {
+            objects.insert("new", at: 0)
+            let indexPath = IndexPath(row: 0, section: 0)
+            tableView.insertRows(at: [indexPath], with: .automatic)
+        }
     }
 
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -43,9 +44,13 @@ class ViewController: UIViewController {
         
         if editing {
             tableView.isEditing = true
+            self.objects.insert("add row", at: 0)
+            tableView.reloadData()
         }
         else {
             tableView.isEditing = false
+            self.objects.remove(at: 0)
+            tableView.reloadData()
         }
     }
 
@@ -53,34 +58,21 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return objects.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath) as! MyCell
-        cell.textLabel?.text = data[indexPath.row]
+        cell.textLabel?.text = objects[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            if indexPath.row == data.count-1 {
-                print("is last \(isLast)")
-                self.isLast = true
-                data.remove(at: indexPath.row)
-                data.append("")
-            }
-            else {
-                self.isLast = false
-                data.remove(at: indexPath.row)
-            }
+            objects.remove(at: indexPath.row)
         }
         else if editingStyle == .insert {
-            if isLast {
-                data.remove(at: data.count-1)
-                isLast = false
-            }
-            data.append(String(indexPath.row))
+            objects.append(String(objects.count-1))
         }
         tableView.reloadData()
     }
@@ -93,7 +85,7 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         if tableView.isEditing {
-            if indexPath.row == data.count-1 {
+            if indexPath.row == 0 {
                 return .insert
             }
             else {
