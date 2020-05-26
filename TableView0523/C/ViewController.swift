@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     
     @objc
     func insertNewObject(_ sender: Any) {
-        //disable right bar add button in edit mode
+        //Disable right bar add button in edit mode
         if !tableView.isEditing {
             objects.insert("\(objects.count)", at: 0)
             tableView.reloadData()
@@ -41,7 +41,7 @@ class ViewController: UIViewController {
 
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        
+        //Edit button toggling between edit mode
         if editing {
             tableView.isEditing = true
         }
@@ -64,12 +64,15 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        //only allow delete rows in edit mode with delete button
+        //Only allow delete rows in edit mode with delete button
         if isEditing {
             return true
         }
-        //disable swipe to delele action
-        //cause it conflicts with edit mode when swiped to delete the last row in table view
+        //Disable swipe to delele action.
+        //Swipe to delete action conflicts with edit mode.
+        //When swiped to delete the last row in table view
+        //you will miss delete button in edit mode
+        //after you added a new row with insert button.
         else {
             return false
         }
@@ -92,6 +95,7 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        //If in the edit mode
         if tableView.isEditing {
             if indexPath.row == 0 {
                 return .insert
@@ -100,6 +104,7 @@ extension ViewController: UITableViewDelegate {
                 return .delete
             }
         }
+        //If not in the edit mode
         else {
             return .delete
         }
